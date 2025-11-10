@@ -2,196 +2,208 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Feliz cumpleaños Mia 🎂💖</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎉 ¡Feliz cumpleaños Mia! 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg1: #FFE5F4;
-      --bg2: #FFF6E8;
-      --accent1: #FF6B9A;
-      --accent2: #FFB86C;
-      --accent3: #7AE5C7;
-      --accent4: #B58CFF;
-      --text: #331A2A;
+      --pink: #ff6ec7;
+      --purple: #b388ff;
+      --yellow: #ffe97f;
+      --blue: #89f7fe;
+      --mint: #7ef9c0;
+      --white: #fff;
     }
+
+    * { box-sizing: border-box; }
 
     html, body {
-      height: 100%;
       margin: 0;
-      font-family: 'Poppins', system-ui;
+      height: 100%;
+      font-family: "Poppins", sans-serif;
       overflow: hidden;
-      background: linear-gradient(120deg, var(--bg1), var(--bg2));
-      animation: bgShift 10s ease-in-out infinite alternate;
+      background: radial-gradient(circle at 20% 30%, #ffb8d2, #ff9acd, #ffa5b3, #ffc7a2);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease-in-out infinite alternate;
+      position: relative;
     }
 
-    @keyframes bgShift {
-      0% { background: linear-gradient(120deg, var(--bg1), var(--bg2)); }
-      50% { background: linear-gradient(120deg, #FFD1E8, #FFF5C3); }
-      100% { background: linear-gradient(120deg, #FFE5F4, #FFEBD9); }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('https://www.transparenttextures.com/patterns/polished-metal.png');
-      opacity: 0.15;
+    /* fondo de estrellas */
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: transparent url('https://www.transparenttextures.com/patterns/tiny-stars.png') repeat;
+      opacity: 0.25;
+      animation: twinkle 6s ease-in-out infinite alternate;
       z-index: 0;
     }
-
-    .card {
-      position: relative;
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 18px;
-      padding: 42px 52px;
-      border-radius: 26px;
-      text-align: center;
-      backdrop-filter: blur(10px) saturate(1.4);
-      border: 1px solid rgba(255,255,255,0.4);
-      box-shadow: 0 20px 50px rgba(255, 105, 180, 0.25);
-      background: rgba(255,255,255,0.3);
-      animation: popUp 1.2s ease;
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      100% { opacity: 0.4; }
     }
 
-    @keyframes popUp {
-      0% { transform: scale(0.7) rotate(-4deg); opacity: 0; }
-      100% { transform: scale(1) rotate(0); opacity: 1; }
+    /* globos */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 80px;
+      height: 100px;
+      border-radius: 50%;
+      opacity: 0.85;
+      animation: floatUp 12s ease-in-out infinite;
+      box-shadow: inset -10px -20px rgba(0,0,0,0.1);
+      z-index: 2;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+      20% { opacity: 1; }
+      50% { transform: translateY(-60vh) rotate(3deg); }
+      100% { transform: translateY(-120vh) rotate(-3deg); opacity: 0; }
+    }
+
+    /* carta central */
+    .card {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 25px;
+      backdrop-filter: blur(10px) saturate(1.3);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+      padding: 60px 80px;
+      z-index: 5;
+      animation: popIn 1.5s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+
+    @keyframes popIn {
+      0% { transform: translate(-50%, -50%) scale(0.6) rotate(-5deg); opacity: 0; }
+      100% { transform: translate(-50%, -50%) scale(1) rotate(0); opacity: 1; }
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-weight: 900;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3), var(--accent4));
-      -webkit-background-clip: text;
+      font-family: "Pacifico", cursive;
+      font-size: clamp(2rem, 6vw, 4.5rem);
       color: transparent;
-      text-shadow: 0 0 18px rgba(255, 165, 200, 0.3);
-      animation: glow 3s ease-in-out infinite alternate;
+      background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue), var(--mint), var(--yellow));
+      background-size: 400%;
+      -webkit-background-clip: text;
+      animation: textFlow 6s linear infinite;
+      text-shadow: 0 0 25px rgba(255,255,255,0.5);
+      margin: 0 0 10px;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px rgba(255, 160, 190, 0.4), 0 0 20px rgba(255, 180, 210, 0.3); }
-      to { text-shadow: 0 0 20px rgba(255, 100, 150, 0.8), 0 0 40px rgba(255, 150, 200, 0.6); }
+    @keyframes textFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
     }
 
-    p.msg {
-      margin: 0;
+    .subtext {
+      color: #2d0036;
+      font-weight: 600;
+      font-size: 1.3rem;
+      text-shadow: 0 0 10px rgba(255,255,255,0.4);
+      margin-top: 15px;
+    }
+
+    .from {
+      margin-top: 20px;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--text);
-      opacity: 0.9;
-      font-size: 1.1rem;
-      animation: fadeIn 2.2s ease;
+      color: var(--purple);
+      text-shadow: 0 0 12px rgba(255,255,255,0.5);
+      animation: glowText 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px rgba(179,136,255,0.4), 0 0 20px rgba(179,136,255,0.6); }
+      to { text-shadow: 0 0 20px rgba(137,247,254,0.7), 0 0 40px rgba(126,249,192,0.5); }
     }
 
     .credit {
-      font-size: 0.85rem;
-      color: rgba(51,26,42,0.6);
-      margin-top: 10px;
-      animation: fadeIn 3s ease;
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 0.9rem;
+      margin-top: 15px;
+      animation: fadeIn 2s ease-in;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* confetti */
+    /* confeti */
     .confetti {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 3;
-      overflow: hidden;
-    }
-    .confetti i {
-      position: absolute;
-      display: block;
-      width: 10px;
-      height: 14px;
-      border-radius: 3px;
-      transform-origin: center;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(720deg);
-        opacity: 0.9;
-      }
-    }
-
-    /* floating circles */
-    .floaty-bubbles {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      z-index: 1;
+      pointer-events: none;
+      z-index: 3;
     }
 
-    .floaty-bubbles span {
+    .confetti span {
       position: absolute;
-      bottom: -50px;
-      background: radial-gradient(circle, rgba(255,255,255,0.6), transparent 70%);
-      border-radius: 50%;
-      animation: floatUp 12s infinite ease-in;
+      width: 10px;
+      height: 16px;
+      border-radius: 2px;
+      opacity: 0.9;
+      animation: fall 6s linear infinite;
     }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(0.8); opacity: 0.6; }
-      50% { opacity: 1; transform: translateY(-60vh) scale(1); }
-      100% { opacity: 0; transform: translateY(-100vh) scale(0.9); }
-    }
-
-    @media (max-width:520px) {
-      .card { padding: 28px 20px; border-radius: 18px; }
-      p.msg { font-size: 1rem; }
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(720deg); }
     }
   </style>
 </head>
 <body>
-  <div class="floaty-bubbles" aria-hidden="true"></div>
+  <div class="stars"></div>
+  <div class="confetti"></div>
 
   <div class="card">
     <h1>🎉 ¡Feliz cumpleaños, Mia! 🎂</h1>
-    <p class="msg">Que tu día brille tanto como tú, lleno de risas, flores y sueños cumplidos ✨</p>
-    <div class="credit">Hecho con mucho cariño 💖</div>
+    <p class="subtext">Que tu día esté lleno de magia, risas y momentos que brillen como tú ✨</p>
+    <div class="from">💌 Te quiere, <strong>Ron Damon</strong> 💖</div>
+    <div class="credit">Hecho con cariño y mucho color 🌈</div>
   </div>
 
-  <div class="confetti"></div>
-
   <script>
-    // colores del confeti
-    const colors = ['#FF6B9A','#FFB86C','#7AE5C7','#F9F871','#B58CFF','#FF9AD1','#FFDEE3'];
-    const confettiContainer = document.querySelector('.confetti');
-    for (let i = 0; i < 80; i++) {
-      const el = document.createElement('i');
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.top = Math.random() * -20 + 'vh';
-      el.style.width = (6 + Math.random() * 10) + 'px';
-      el.style.height = (8 + Math.random() * 14) + 'px';
-      el.style.background = colors[Math.floor(Math.random() * colors.length)];
-      el.style.animation = `fall ${3 + Math.random() * 5}s linear ${Math.random()}s infinite`;
-      el.style.opacity = 0.9;
-      confettiContainer.appendChild(el);
+    /* confeti animado */
+    const colors = ['#FF6B9A','#FFB86C','#7AE5C7','#F9F871','#B58CFF','#FF9AD1','#FFDEE3','#89f7fe'];
+    const confetti = document.querySelector('.confetti');
+    for (let i = 0; i < 120; i++) {
+      const piece = document.createElement('span');
+      piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.left = Math.random() * 100 + 'vw';
+      piece.style.top = Math.random() * -20 + 'vh';
+      piece.style.width = (6 + Math.random() * 10) + 'px';
+      piece.style.height = (8 + Math.random() * 16) + 'px';
+      piece.style.animationDuration = (3 + Math.random() * 4) + 's';
+      piece.style.animationDelay = Math.random() * 4 + 's';
+      confetti.appendChild(piece);
     }
 
-    // burbujas flotantes suaves
-    const bubbleContainer = document.querySelector('.floaty-bubbles');
-    for (let i = 0; i < 20; i++) {
-      const bubble = document.createElement('span');
-      const size = 30 + Math.random() * 70;
-      bubble.style.width = size + 'px';
-      bubble.style.height = size + 'px';
-      bubble.style.left = Math.random() * 100 + 'vw';
-      bubble.style.animationDuration = (8 + Math.random() * 6) + 's';
-      bubble.style.animationDelay = Math.random() * 4 + 's';
-      bubbleContainer.appendChild(bubble);
+    /* globos flotantes */
+    const colorsBalloon = ['var(--pink)', 'var(--purple)', 'var(--mint)', 'var(--blue)', 'var(--yellow)'];
+    for (let i = 0; i < 10; i++) {
+      const b = document.createElement('div');
+      b.classList.add('balloon');
+      b.style.left = Math.random() * 100 + 'vw';
+      b.style.background = colorsBalloon[Math.floor(Math.random() * colorsBalloon.length)];
+      b.style.animationDelay = Math.random() * 5 + 's';
+      b.style.animationDuration = (10 + Math.random() * 5) + 's';
+      document.body.appendChild(b);
     }
   </script>
 </body>
